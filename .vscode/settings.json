@@ -5,11 +5,7 @@
     "**/__pycache__": true,
     ".venv": true,
     ".cache": true,
-    "**/~$*": true,
-    "report/Informe_DenseNet_Jimmy_Vargas.docx": true,
-    "report/Informe_DenseNet_Jimmy_Vargas.pdf": true,
-    "report/Informe_DenseNet_Jimmy_Vargas.revised.docx": true,
-    "report/Informe_DenseNet_Jimmy_Vargas_Actualizado.*": true
+    "**/~$*": true
   },
   "search.exclude": {"**/.venv": true, "**/data": true}
 }
