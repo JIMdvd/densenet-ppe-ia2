@@ -1,0 +1,9 @@
+{
+  "python": "3.12.14",
+  "pytorch": "2.7.1+cu118",
+  "cuda_runtime": "11.8",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce GTX 1650 Ti",
+  "memory_gib": 4.0,
+  "cuda_operation_ok": true
+}

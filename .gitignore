@@ -4,4 +4,6 @@ data/
 models/
 .cache/
 outputs/*.pt
+*.pt
+*.pth
 *.log
