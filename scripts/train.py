@@ -6,6 +6,8 @@ import random
 import time
 import math
 import os
+import hashlib
+import shutil
 from pathlib import Path
 
 import matplotlib
@@ -47,10 +49,15 @@ def main():
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--image-size", type=int, default=128)
     parser.add_argument("--learning-rate", type=float, default=0.001)
+    parser.add_argument("--patience", type=int, default=0, help="Epocas sin mejora suficiente antes de parar; 0 desactiva.")
+    parser.add_argument("--min-delta", type=float, default=0.001)
+    parser.add_argument("--min-epochs", type=int, default=5)
     parser.add_argument("--smoke-test", action="store_true", help="Prueba corta aislada; no usa el conjunto test ni publica un modelo final.")
     args = parser.parse_args()
     if args.epochs < 1 or args.batch_size < 1 or args.image_size < 32 or not math.isfinite(args.learning_rate) or args.learning_rate <= 0:
         raise SystemExit("Revisar epochs, batch-size e image-size.")
+    if args.patience < 0 or args.min_epochs < 1 or not math.isfinite(args.min_delta) or args.min_delta < 0:
+        raise SystemExit("Revisar patience, min-epochs y min-delta.")
     if args.smoke_test:
         args.epochs = 1
     if not torch.cuda.is_available():
@@ -91,10 +98,16 @@ def main():
     config["evaluation_split"] = "valid_subset_for_software_check" if args.smoke_test else "test"
     config["trainable_parameters"] = sum(p.numel() for p in model.parameters() if p.requires_grad)
     config["total_parameters"] = sum(p.numel() for p in model.parameters())
+    manifest = ROOT / "outputs/dataset_manifest.csv"
+    config["dataset_manifest_sha256"] = hashlib.sha256(manifest.read_bytes()).hexdigest()
+    for filename in ("dataset_manifest.csv", "dataset_summary.json"):
+        shutil.copy2(ROOT / "outputs" / filename, run / filename)
     (run / "config.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
     print(f"GPU: {config['gpu']} | clases: {config['classes']} | resultados: {run}", flush=True)
     history = []
     best_loss = float("inf")
+    stopping_reference = float("inf")
+    epochs_without_improvement = 0
     best_path = run / "best_densenet121.pt"
     for epoch in range(1, args.epochs + 1):
         started = time.perf_counter()
@@ -134,6 +147,11 @@ def main():
         if metrics["valid_loss"] < best_loss:
             best_loss = metrics["valid_loss"]
             save_checkpoint({"model_state_dict": model.state_dict(), "config": config, "epoch": epoch}, best_path)
+        if metrics["valid_loss"] < stopping_reference - args.min_delta:
+            stopping_reference = metrics["valid_loss"]
+            epochs_without_improvement = 0
+        else:
+            epochs_without_improvement += 1
         save_checkpoint({"model_state_dict": model.state_dict(), "optimizer_state_dict": optimizer.state_dict(), "config": config, "epoch": epoch, "history": history}, run / "last_checkpoint.pt")
         print(f"Epoca {epoch}/{args.epochs}: loss={metrics['train_loss']:.4f}, accuracy={metrics['train_accuracy']:.3f}, val_loss={metrics['valid_loss']:.4f}, val_accuracy={metrics['valid_accuracy']:.3f}, segundos={metrics['seconds']:.1f}", flush=True)
         if epoch == 1:
@@ -148,6 +166,9 @@ def main():
         fig.tight_layout()
         fig.savefig(run / "learning_curves.png", dpi=160)
         plt.close(fig)
+        if args.patience and epoch >= args.min_epochs and epochs_without_improvement >= args.patience:
+            print(f"Parada temprana: {args.patience} epocas sin reducir val_loss al menos {args.min_delta}.", flush=True)
+            break
 
     saved = torch.load(best_path, map_location=device, weights_only=True)
     model.load_state_dict(saved["model_state_dict"])
@@ -167,6 +188,7 @@ def main():
     report["balanced_accuracy"] = balanced_accuracy_score(actual, predicted)
     report["smoke_test"] = args.smoke_test
     report["selected_epoch"] = saved["epoch"]
+    report["completed_epochs"] = len(history)
     (run / "test_metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     with (run / "test_predictions.csv").open("w", newline="", encoding="utf-8") as stream:
         writer = csv.writer(stream)
@@ -196,7 +218,6 @@ def main():
     plt.close(fig)
     model_dir = ROOT / "models"
     model_dir.mkdir(exist_ok=True)
-    import shutil
     if not args.smoke_test:
         shutil.copy2(best_path, model_dir / "densenet121_ppe.pt")
     if args.smoke_test:

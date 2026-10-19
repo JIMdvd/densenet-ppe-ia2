@@ -16,6 +16,14 @@
       "args": ["scripts/train.py", "--epochs", "5", "--batch-size", "8", "--image-size", "128"],
       "options": {"cwd": "${workspaceFolder}"},
       "problemMatcher": []
+    },
+    {
+      "label": "Entrenar DenseNet121 con parada temprana (maximo 20)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["scripts/train.py", "--epochs", "20", "--batch-size", "8", "--image-size", "128", "--learning-rate", "0.0005", "--patience", "4", "--min-epochs", "5"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
     }
   ]
 }

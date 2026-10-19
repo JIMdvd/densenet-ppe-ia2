@@ -13,19 +13,19 @@
       "helmet": 307
     },
     "valid": {
-      "helmet": 520,
-      "worker": 750,
-      "vest": 428,
-      "head": 230
+      "helmet": 486,
+      "worker": 709,
+      "vest": 398,
+      "head": 223
     },
     "train": {
-      "helmet": 1143,
-      "worker": 2175,
-      "vest": 1311,
-      "head": 1032
+      "helmet": 1130,
+      "worker": 2153,
+      "vest": 1290,
+      "head": 1023
     }
   },
-  "total_crops": 8670,
+  "total_crops": 8493,
   "classes": {
     "0": "head",
     "1": "helmet",
@@ -35,36 +35,223 @@
   "excluded": [
     {
       "split": "valid",
+      "image": "00341_jpg.rf.89a45faf397c949fb011619a22ea0ba2.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "train-477-_jpg.rf.1b734b3de3119eedbe8212378fa785ee.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "02081_jpg.rf.69f9bbc27e8baf7cb38a40c2562c16e5.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "02081_jpg.rf.cf41054356ce89cd61af46a5e941b178.jpg"
+    },
+    {
+      "split": "valid",
       "image": "gettyimages-166018155-612x612_jpg.rf.d644d27fa2c57222a7b9a424b5f71c36.jpg",
       "reason": "exact_duplicate_across_splits",
-      "kept_split": "test"
+      "kept_split": "test",
+      "kept_image": "suit_helmet_97_jpg.rf.efba577b7c48ee1fd01f51e414732bf1.jpg"
     },
     {
       "split": "valid",
       "image": "gettyimages-858561748-612x612_jpg.rf.46d78c789629402480271b7653446eab.jpg",
       "reason": "exact_duplicate_across_splits",
-      "kept_split": "test"
+      "kept_split": "test",
+      "kept_image": "suit_helmet_144_jpg.rf.8ed2d19d15fbf1185d12d5a4439dc923.jpg"
     },
     {
       "split": "valid",
       "image": "gettyimages-858561752-612x612_jpg.rf.911a92d6beb95c65feea0ea9d5a3b739.jpg",
       "reason": "exact_duplicate_across_splits",
-      "kept_split": "test"
+      "kept_split": "test",
+      "kept_image": "suit_helmet_145_jpg.rf.25051c9141640c04cde6c255cc01e776.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_0328_jpg.rf.657f8abcef00cca302606d6255ca9ab4.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "77_jpg.rf.e42518b77f0a0addc5a7f62e02b75770.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_0561_jpg.rf.a7dc3a6f4b9710fb98c9fbfcf7a0a08f.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "ppe_0561_jpg.rf.0e0a9489535fc919f99bbe74262e1753.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_0644_jpg.rf.81231db2b985f0770c3ca51382d5f423.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "00619_jpg.rf.f8ad37fb72d04cf7c86937859cef316c.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_0665_jpg.rf.0cd1b5287a53afb7edf40a24842de7e6.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "00624_jpg.rf.273a5719301064f7987a1eeef4162074.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_0703_jpg.rf.8d68b9f9456dd11cd35b75be01dbeca4.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "00599_jpg.rf.5940c440fd735201eaf69b7cb305a351.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_1057_jpg.rf.4acaddf8e51519aec53f51a19d70db49.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "02045_jpg.rf.d223b2f6ea40623a14be108fa8350807.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_1077_jpg.rf.5ed45c31354492fc54006f3bb1b238bf.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "02244_jpg.rf.06eec873e3b59c3e02a51649891e1f11.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_1148_jpg.rf.15d50b6aca4f1d5e0fb279e1b37144c5.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "02012_jpg.rf.bc8b49dfd9f2fa1284fef7b518ff5932.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_1176_jpg.rf.0209ae5ab6c7a7f58ecd97e0c4ef3ace.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "02514_jpg.rf.223bfc5e4739fb540fb2e1871e30ddba.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "ppe_1274_jpg.rf.2b1cabcf6e4ad3eecd7bf00b0dd5da86.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "02611_jpg.rf.b00663b0a87d31ee28c1c39454a85fd1.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "re48_jpg.rf.57356d0b9ef013fed77ad473c4f6bcfd.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "00265_jpg.rf.3a1da76ff41a123afab6962c78d5f510.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "train-346-_jpg.rf.a362ef3891338aaa09808cf59d141661.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "suit_helmet_165_jpg.rf.9df66d52d8caedb251e71445b3fba751.jpg"
+    },
+    {
+      "split": "valid",
+      "image": "train-492-_jpg.rf.65667fa7999fa242af83d85dc037b1a0.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "00599_jpg.rf.5940c440fd735201eaf69b7cb305a351.jpg"
+    },
+    {
+      "split": "train",
+      "image": "00107_jpg.rf.b13b66327fcd664cc94ea65a6a8da432.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "00107_jpg.rf.e6e5e4848e810e9024836f774638608d.jpg"
     },
     {
       "split": "train",
       "image": "gettyimages-527894048-612x612_jpg.rf.b1699b40626ab7cdc311519a8ea320f9.jpg",
       "reason": "exact_duplicate_across_splits",
-      "kept_split": "test"
+      "kept_split": "test",
+      "kept_image": "suit_helmet_125_jpg.rf.58ef75f154714eeea30052ee5ac0f992.jpg"
+    },
+    {
+      "split": "train",
+      "image": "helmet_jacket_03672_jpg.rf.72c039c8831c5a3caac86e964bc42f77.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "valid",
+      "kept_image": "ppe_0332_jpg.rf.cb9e8a2804b05b852596a32f15223756.jpg"
     },
     {
       "split": "train",
       "image": "IMG_0943_jpg.rf.4e6fcc8585fd3b24239ea0482f0dc418.jpg",
       "box": 2,
       "reason": "crop_smaller_than_4_pixels"
+    },
+    {
+      "split": "train",
+      "image": "ppe_0086_jpg.rf.b46391425d6c58a22f6c5da534b9bf5b.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "ppe_0086_jpg.rf.60e1a5f7f67c549613f9dc3986df73ce.jpg"
+    },
+    {
+      "split": "train",
+      "image": "ppe_0430_jpg.rf.87d0ba65682da09f26007d35a2d767ce.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "valid",
+      "kept_image": "ppe_0430_jpg.rf.a26027f5cf5a6f9992e74346bdf47997.jpg"
+    },
+    {
+      "split": "train",
+      "image": "ppe_0502_jpg.rf.2b9877aeefd07aeb88ad9fafc9880086.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "valid",
+      "kept_image": "ppe_0502_jpg.rf.2dd39670527651675b0fa022bed1a2cd.jpg"
+    },
+    {
+      "split": "train",
+      "image": "ppe_1059_jpg.rf.34d0b8faa96e4cd81ed96ed5a627033e.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "02535_jpg.rf.ddad48a695222b5d693d0d2489dc2b3e.jpg"
+    },
+    {
+      "split": "train",
+      "image": "r142_jpg.rf.c569d21024b091011a50b6600e731cd6.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "valid",
+      "kept_image": "r142_jpg.rf.548a268628f2a4cefab020ba29f44098.jpg"
+    },
+    {
+      "split": "train",
+      "image": "r15_jpg.rf.8465c42b81c0bade64df53b456abd0df.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "valid",
+      "kept_image": "r15_jpg.rf.69cee353557a8a76fc9f214ee687df3e.jpg"
+    },
+    {
+      "split": "train",
+      "image": "r377_jpg.rf.d48547d203ef0ad874b08a465227bf0b.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "valid",
+      "kept_image": "r377_jpg.rf.a8851557ff5e375e4ec11438c1b0ae80.jpg"
+    },
+    {
+      "split": "train",
+      "image": "re56_jpg.rf.c0833e95ed3ea45dbb7ff92f1d47ff1a.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "valid",
+      "kept_image": "re41_jpg.rf.caaec6ad75462ce4d14295e745d420b5.jpg"
+    },
+    {
+      "split": "train",
+      "image": "train-495-_jpg.rf.08cad17794edf372d188db0385c793c3.jpg",
+      "reason": "near_duplicate_across_splits",
+      "kept_split": "test",
+      "kept_image": "ppe_0718_jpg.rf.03b7345156c18115a97e3aeed4aca003.jpg"
     }
   ],
   "license": "CC BY 4.0",
   "provenance": "https://universe.roboflow.com/yihong-chen/ppe-compliance-detection-iln63/dataset/5",
-  "task": "Clasificacion de regiones etiquetadas; no certifica cumplimiento de seguridad de una persona o escena."
+  "task": "Clasificacion de regiones etiquetadas; no certifica cumplimiento de seguridad de una persona o escena.",
+  "duplicate_filter": "SHA256 o dHash Hamming <=6 y diferencia RGB media <=3/255 a 64x64; grupos transitivos; prioridad test > valid > train. No detecta todas las escenas relacionadas."
 }
