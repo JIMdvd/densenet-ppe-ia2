@@ -46,4 +46,8 @@ Se selecciona el modelo con menor perdida en validacion y se evalua en test al f
 
 ## Estado
 
+Comprobacion tecnica: `scripts/train.py --smoke-test` ejecuta una prueba breve con muestras de entrenamiento y validacion. Comprueba ajuste del clasificador, guardado, recuperacion del modelo y graficos. Guarda todo en `work/verification/`, no consulta test y no publica un modelo final. Sus metricas no se usan en el informe.
+
+El entrenamiento guarda el mejor modelo por perdida de validacion y un checkpoint de la ultima epoca con el estado del optimizador. Un archivo de bloqueo evita ejecuciones simultaneas; si el proceso termina abruptamente, verificar que ya no esta activo antes de retirar `.training.lock`. No se reanuda automaticamente un proceso interrumpido.
+
 La organizacion y preparacion no equivalen a un entrenamiento. Los resultados experimentales de DenseNet se registraran al ejecutar su entrenamiento y evaluacion.

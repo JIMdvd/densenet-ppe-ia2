@@ -7,3 +7,5 @@ outputs/*.pt
 *.pt
 *.pth
 *.log
+work/
+.training.lock
