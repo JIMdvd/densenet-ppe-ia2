@@ -28,4 +28,12 @@ Con el entorno de Python preparado, descargar el [modelo entrenado](https://gith
 
 Los resultados se guardan en `demostraciones/resultados/`.
 
+Para probar la cámara en el centro de la imagen, instala las dependencias con `pip install -r requirements.txt` y ejecuta:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/demo_camara.py
+```
+
+Esta prueba clasifica la región central de la cámara. Los recuadros de detección están en la demo para PC de la carpeta `DenseNet-PPE-PC-Demo`.
+
 Dataset: [PPE Compliance Detection v5](https://universe.roboflow.com/yihong-chen/ppe-compliance-detection-iln63/dataset/5), de Yihong Chen, licencia CC BY 4.0.
