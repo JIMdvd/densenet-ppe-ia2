@@ -1,0 +1,7 @@
+# Instalar primero PyTorch y torchvision con CUDA desde el indice oficial.
+# .venv/Scripts/python.exe -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu118
+numpy
+pillow
+matplotlib
+scikit-learn
+PyYAML
