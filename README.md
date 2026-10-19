@@ -2,6 +2,24 @@
 
 Proyecto del curso Inteligencia Artificial II. La tarea consiste en clasificar recortes de cuatro categorias: cabeza (Head), casco (Helmet), chaleco (Vest) y trabajador (Worker).
 
+Repositorio: https://github.com/JIMdvd/densenet-ppe-ia2
+
+## Uso en otra computadora
+
+El repositorio conserva el codigo, el historial Git, las metricas y las demostraciones. No incluye el entorno virtual ni el dataset completo. Para ejecutar los ejemplos, instalar Python 3.12 y, desde una terminal PowerShell:
+
+```powershell
+git clone https://github.com/JIMdvd/densenet-ppe-ia2.git
+cd densenet-ppe-ia2
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cu118
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Descargar `densenet121_ppe.pt` desde [Releases](https://github.com/JIMdvd/densenet-ppe-ia2/releases) y colocarlo en `models/` (crear la carpeta si no existe). Ejecutar `.\.venv\Scripts\python.exe scripts\demo.py`. La prediccion usa CPU si CUDA no esta disponible; el entrenamiento exige GPU CUDA. `requirements-lock.txt` registra las versiones exactas del entorno original.
+
+Para reentrenar, descargar el dataset de la fuente indicada abajo y ejecutar `scripts/prepare_dataset.py --source "ruta_al_dataset_descomprimido"` con el Python del entorno, antes de entrenar. No regenerar datos sobre una carpeta `data/classification/` existente. Los resultados finales conservados corresponden al experimento documentado, no a cualquier nueva ejecucion.
+
 ## Organizacion
 
 Empieza por `EMPIEZA_AQUI.md`: mapa de carpetas y demostracion en un comando.
