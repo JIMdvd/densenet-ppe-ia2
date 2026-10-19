@@ -20,7 +20,7 @@ def main():
         y = x @ x
         torch.cuda.synchronize()
         report["cuda_operation_ok"] = y[0, 0].item() == 256
-    target = Path(__file__).resolve().parents[1] / "outputs" / "environment.json"
+    target = Path(__file__).resolve().parents[1] / "outputs/entorno/environment.json"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, indent=2), encoding="utf-8")
     print(json.dumps(report, indent=2), flush=True)

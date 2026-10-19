@@ -1,6 +1,6 @@
 # Resultados verificados de DenseNet121
 
-Ejecucion definitiva: `outputs/run_20261019_102743_25844`.
+Ejecucion definitiva: `run_20261019_102743_25844`, organizada en `outputs/resultados_finales/`.
 Modelo: `models/densenet121_ppe.pt`.
 
 ## Experimento
@@ -42,7 +42,7 @@ La confusion mas frecuente fue vest con worker: 10 chalecos clasificados como tr
 
 ## Material disponible
 
-En la carpeta de la ejecucion: `learning_curves.png`, `confusion_matrix.png`, `prediction_examples.png`, `demostracion.png`, `history.csv`, `test_metrics.json`, `test_predictions.csv`, `config.json` y copias del manifiesto y resumen de datos.
+En `outputs/resultados_finales/`: `graficas/` contiene curvas, matriz de confusion y ejemplos; `metricas/` contiene historial, medidas y predicciones; `configuracion/` conserva configuracion, manifiesto y resumen de datos; `checkpoints/` contiene los pesos del mejor modelo y la ultima epoca. Las demostraciones estan separadas en `demostraciones/resultados/`.
 
 ## Alcance y limitaciones
 

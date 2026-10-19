@@ -1,0 +1,13 @@
+{
+  "image": "C:\\Users\\varga\\Documents\\ChatGPT\\Cursos\\DenseNet-PPE\\demostraciones\\imagenes\\worker.jpg",
+  "prediction": "worker",
+  "softmax_scores": {
+    "head": 7.535831628047163e-06,
+    "helmet": 0.00012416424578987062,
+    "vest": 0.0008121327264234424,
+    "worker": 0.9990561604499817
+  },
+  "model_epoch": 5,
+  "software_test_model": false,
+  "scope": "Clasificacion de un recorte; no detecta objetos ni certifica seguridad."
+}

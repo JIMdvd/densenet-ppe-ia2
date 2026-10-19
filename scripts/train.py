@@ -91,17 +91,17 @@ def main():
     model.to(device)
     optimizer = torch.optim.Adam(model.classifier.parameters(), lr=args.learning_rate)
     criterion = nn.CrossEntropyLoss()
-    run = ROOT / ("work/verification" if args.smoke_test else "outputs") / (time.strftime("run_%Y%m%d_%H%M%S") + f"_{os.getpid()}")
+    run = ROOT / ("work/verification" if args.smoke_test else "outputs/entrenamientos") / (time.strftime("run_%Y%m%d_%H%M%S") + f"_{os.getpid()}")
     run.mkdir(parents=True, exist_ok=False)
     config = dict(vars(args), seed=seed, model="DenseNet121", pretrained_weights="IMAGENET1K_V1", training_mode="frozen_backbone_train_classifier", classes=data["train"].classes, class_to_idx=data["train"].class_to_idx, gpu=torch.cuda.get_device_name(0), pytorch=torch.__version__, torchvision_input_normalization="ImageNet", train_samples=len(data["train"]), valid_samples=len(data["valid"]), test_samples=len(data["test"]), augmentation=False)
     config["pytorch"] = str(torch.__version__)
     config["evaluation_split"] = "valid_subset_for_software_check" if args.smoke_test else "test"
     config["trainable_parameters"] = sum(p.numel() for p in model.parameters() if p.requires_grad)
     config["total_parameters"] = sum(p.numel() for p in model.parameters())
-    manifest = ROOT / "outputs/dataset_manifest.csv"
+    manifest = ROOT / "outputs/datos/dataset_manifest.csv"
     config["dataset_manifest_sha256"] = hashlib.sha256(manifest.read_bytes()).hexdigest()
     for filename in ("dataset_manifest.csv", "dataset_summary.json"):
-        shutil.copy2(ROOT / "outputs" / filename, run / filename)
+        shutil.copy2(ROOT / "outputs/datos" / filename, run / filename)
     (run / "config.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
     print(f"GPU: {config['gpu']} | clases: {config['classes']} | resultados: {run}", flush=True)
     history = []

@@ -75,7 +75,7 @@ def main():
         raise SystemExit("No preparar datos mientras hay un entrenamiento activo.")
     if crops.exists():
         raise SystemExit("classification ya existe. Archivar sus datos antes de regenerar para evitar recortes antiguos.")
-    report_dir = ROOT / "outputs"
+    report_dir = ROOT / "outputs/datos"
     report_dir.mkdir(parents=True, exist_ok=True)
     for split in ("train", "valid", "test"):
         for folder in ("images", "labels"):

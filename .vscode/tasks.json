@@ -2,6 +2,14 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Demostracion: cuatro ejemplos (sin entrenar)",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["scripts/demo.py"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": []
+    },
+    {
       "label": "Comprobar GPU CUDA",
       "type": "process",
       "command": "${workspaceFolder}/.venv/Scripts/python.exe",

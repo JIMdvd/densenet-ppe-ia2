@@ -18,6 +18,7 @@ def main():
     parser.add_argument("--model", type=Path, default=ROOT / "models/densenet121_ppe.pt")
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--output", type=Path, help="Grafico opcional de la prediccion.")
+    parser.add_argument("--json-output", type=Path, help="Archivo opcional con las puntuaciones.")
     args = parser.parse_args()
     if not args.image.is_file() or not args.model.is_file():
         parser.error("No se encuentra la imagen o el modelo. Revisar las rutas.")
@@ -56,6 +57,9 @@ def main():
         "scope": "Clasificacion de un recorte; no detecta objetos ni certifica seguridad.",
     }
     print(json.dumps(result, indent=2, ensure_ascii=False))
+    if args.json_output:
+        args.json_output.parent.mkdir(parents=True, exist_ok=True)
+        args.json_output.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     if args.output:
         import matplotlib
         matplotlib.use("Agg")

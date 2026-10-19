@@ -4,10 +4,18 @@ Proyecto del curso Inteligencia Artificial II. La tarea consiste en clasificar r
 
 ## Organizacion
 
+Empieza por `EMPIEZA_AQUI.md`: mapa de carpetas y demostracion en un comando.
+
 - `data/raw/`: copia de las 2000 imagenes originales y sus cajas etiquetadas.
 - `data/classification/`: recortes organizados por conjunto y categoria para DenseNet.
 - `scripts/`: preparacion de datos y comprobacion de GPU.
-- `outputs/`: conteos, manifiesto de recortes y ejemplos visuales.
+- `outputs/resultados_finales/`: graficas, metricas, configuracion y checkpoints definitivos, separados en subcarpetas.
+- `outputs/datos/`: conteos, manifiesto de recortes y muestras del dataset.
+- `outputs/entorno/`: comprobacion de CUDA.
+- `outputs/pruebas_preliminares/`: ensayo anterior; no usar como resultado final.
+- `outputs/entrenamientos/`: destino de nuevas ejecuciones, si se realizan.
+- `demostraciones/imagenes/`: cuatro recortes de ejemplo con nombres simples.
+- `demostraciones/resultados/`: predicciones y graficas de demostracion, separadas de las metricas del experimento.
 - `references/yolo/`: configuracion y resultados del entrenamiento YOLO anterior, como antecedente.
 - `models/`: destino previsto para el modelo DenseNet entrenado.
 - `report/` y `slides/`: espacios para informe y exposicion.
@@ -57,10 +65,12 @@ Esta ejecucion empieza desde los pesos ImageNet y un clasificador nuevo, no desd
 Despues de entrenar, se puede clasificar un recorte sin volver a entrenar:
 
 ```powershell
-.\.venv\Scripts\python.exe scripts\predict.py --image "ruta\al\recorte.jpg" --output outputs\demostracion.png
+.\.venv\Scripts\python.exe scripts\demo.py
 ```
 
 El script recupera las clases y el tamano de entrada del checkpoint. Funciona en GPU o con `--device cpu`. Las puntuaciones softmax no son una garantia de acierto. La entrada debe ser una region recortada: este modelo no genera cajas sobre una escena completa.
+
+Para una sola imagen: `.\.venv\Scripts\python.exe scripts\predict.py --image demostraciones/imagenes/helmet.jpg --output demostraciones/resultados/helmet.png`. Volver a ejecutar una demostracion actualiza sus salidas del mismo nombre; no modifica el modelo ni las metricas finales.
 
 ## Estado
 
@@ -68,4 +78,4 @@ Comprobacion tecnica: `scripts/train.py --smoke-test` ejecuta una prueba breve c
 
 El entrenamiento guarda el mejor modelo por perdida de validacion y un checkpoint de la ultima epoca con el estado del optimizador. Un archivo de bloqueo evita ejecuciones simultaneas; si el proceso termina abruptamente, verificar que ya no esta activo antes de retirar `.training.lock`. No se reanuda automaticamente un proceso interrumpido.
 
-Entrenamiento definitivo completado el 19 de octubre de 2026: 9 epocas ejecutadas, modelo de la epoca 5 seleccionado por menor perdida de validacion. Exactitud en prueba: 97.69%; F1 macro: 97.25%. Resultados en `outputs/run_20261019_102743_25844/`, modelo en `models/densenet121_ppe.pt` y resumen en `report/RESULTADOS_VERIFICADOS.md`. No es necesario volver a entrenar para ejecutar la demostracion.
+Entrenamiento definitivo completado el 19 de octubre de 2026: 9 epocas ejecutadas, modelo de la epoca 5 seleccionado por menor perdida de validacion. Exactitud en prueba: 97.69%; F1 macro: 97.25%. Resultados en `outputs/resultados_finales/` (ejecucion original `run_20261019_102743_25844`), modelo en `models/densenet121_ppe.pt` y resumen en `report/RESULTADOS_VERIFICADOS.md`. No es necesario volver a entrenar para ejecutar la demostracion.
