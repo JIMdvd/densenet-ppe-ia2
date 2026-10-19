@@ -7,6 +7,4 @@
 - PyTorch Examples. ImageNet training and validation example. https://github.com/pytorch/examples/blob/main/imagenet/main.py
 - Dataset PPE Compliance Detection, version 5, licencia CC BY 4.0. https://universe.roboflow.com/yihong-chen/ppe-compliance-detection-iln63/dataset/5
 
-Los archivos en yolo son antecedentes del proyecto existente. Sus metricas de deteccion no son resultados de DenseNet ni se comparan directamente con exactitud de clasificacion.
-
-Documentos del curso revisados: Indicaciones para el trabajo y la exposicion, Estructura del informe expo arquitecturas IA y Rubrica para la evaluacion informe arquitectura IA. Exigen informe DOC o PDF, presentacion, entrenamiento y pruebas, repositorio y control de versiones, y exposicion con demostracion de aproximadamente 30 minutos. La estructura del informe incluye teoria, comparacion, caso practico, resultados, analisis, limitaciones, conclusiones y bibliografia APA.
+- sydddl (2022). Densenet121 example. PlotNeuralNet. Figura de arquitectura utilizada en la presentación. https://github.com/HarisIqbal88/PlotNeuralNet/issues/136

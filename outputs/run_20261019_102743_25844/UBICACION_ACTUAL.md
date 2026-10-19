@@ -1,1 +1,0 @@
-Los archivos de esta ejecucion se organizaron en `outputs/resultados_finales/`, separados por graficas, metricas, configuracion y checkpoints. Las demostraciones estan en `demostraciones/resultados/`. Este aviso conserva la referencia de la ruta anterior.
