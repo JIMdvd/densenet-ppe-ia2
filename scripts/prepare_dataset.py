@@ -64,7 +64,8 @@ def duplicate_exclusions(raw):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source", required=True, type=Path)
+    parser.add_argument("--source", type=Path, default=ROOT / "data" / "raw",
+                        help="Dataset original; por defecto, data/raw del proyecto.")
     args = parser.parse_args()
     source = args.source.resolve()
     if not (source / "data.yaml").is_file():
@@ -74,15 +75,38 @@ def main():
     if (ROOT / ".training.lock").exists():
         raise SystemExit("No preparar datos mientras hay un entrenamiento activo.")
     if crops.exists():
-        raise SystemExit("classification ya existe. Archivar sus datos antes de regenerar para evitar recortes antiguos.")
+        summary_path = ROOT / "outputs" / "datos" / "dataset_summary.json"
+        if not summary_path.is_file():
+            raise SystemExit("classification ya existe, pero falta dataset_summary.json. Revisar los datos antes de regenerar.")
+        summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        print(f"Dataset original: {source}")
+        print(f"Recortes ya preparados: {crops}")
+        print("Se muestran los datos existentes; no se regeneraron recortes.\n")
+        total = 0
+        for split in ("train", "valid", "test"):
+            counts = {}
+            for label in CLASSES.values():
+                folder = crops / split / label
+                if not folder.is_dir():
+                    raise SystemExit(f"Falta la carpeta: {folder}")
+                counts[label] = sum(p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS
+                                    for p in folder.iterdir())
+            if counts != summary["crop_counts"].get(split):
+                raise SystemExit(f"Los recortes de {split} no coinciden con el resumen guardado. Revisar los datos.")
+            total += sum(counts.values())
+            print(f"{split}: {sum(counts.values())} recortes | {counts}")
+        print(f"\nTotal: {total} recortes.")
+        print(f"Muestras del dataset: {ROOT / 'outputs' / 'datos' / 'dataset_samples.jpg'}")
+        return
     report_dir = ROOT / "outputs/datos"
     report_dir.mkdir(parents=True, exist_ok=True)
-    for split in ("train", "valid", "test"):
-        for folder in ("images", "labels"):
-            shutil.copytree(source / split / folder, raw / split / folder, dirs_exist_ok=True)
-    for name in ("data.yaml", "README.dataset.txt", "README.roboflow.txt"):
-        if (source / name).is_file():
-            shutil.copy2(source / name, raw / name)
+    if source != raw.resolve():
+        for split in ("train", "valid", "test"):
+            for folder in ("images", "labels"):
+                shutil.copytree(source / split / folder, raw / split / folder, dirs_exist_ok=True)
+        for name in ("data.yaml", "README.dataset.txt", "README.roboflow.txt"):
+            if (source / name).is_file():
+                shutil.copy2(source / name, raw / name)
 
     counts = defaultdict(Counter)
     source_counts = {}
