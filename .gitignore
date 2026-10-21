@@ -11,7 +11,4 @@ work/
 .training.lock
 ~$*
 *.tmp
-report/Informe_DenseNet_Jimmy_Vargas.docx
-report/Informe_DenseNet_Jimmy_Vargas.pdf
-report/Informe_DenseNet_Jimmy_Vargas.revised.docx
-report/Informe_DenseNet_Jimmy_Vargas_Actualizado.*
+report/
