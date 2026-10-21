@@ -14,8 +14,6 @@ El entrenamiento terminó en 9 épocas y el mejor resultado de validación fue e
 - `scripts/`: código del proyecto.
 - `demostraciones/`: imágenes de ejemplo y sus resultados.
 - `outputs/`: datos del entrenamiento, resultados y gráficas.
-- `slides/`: presentación.
-- `references/`: fuentes consultadas.
 
 ## Probar el modelo
 
